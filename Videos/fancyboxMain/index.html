@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Modal With Video By roundCube</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+   
+<body >
+    <img src="images/ali.jpg" onclick="openModal()">
+    <div id="modal">
+    <div id="close" onclick="closeModal()">
+        <div id="line1"></div> 
+        <div id="line2"></div>
+    </div>
+        <div id="modalTop">
+        <video id='videoPlayer' style="height:100%;width:100%" controls>
+       <source id='mp4Source' src="video/12.mp4" type="video/mp4" />
+       <source id='oggSource' src="video/12.ogg" type="video/ogg" />
+    </video>
+        </div>
+    <div id="modalPartition">
+        <Div id="partitionArrow"></Div>
+        <div id="partitionButton">
+            <button class="btn btn-success btn-block"><b>Enter Website</b></button>
+        </div>
+    </div>
+    </div>
+    <div id="copyright"><a href="https://www.facebook.com/roundCubeInc?fref=ts"><p>&#169; roundCube </p> </a></div>
+
+</body>
+   
+<style>
+#button{
+    position: absolute;
+    top:40%;
+    left:43%;
+    height:10%;
+    width:14%;
+    background-color:orange;
+    -webkit-transition:all 0.25s ease-in;
+    -moz-transition:all 0.25s ease-in 0s;
+    border-radius: 5px;
+    color: white;
+    border-bottom-width: 9px;
+    border-bottom-style: ridge;
+    border-bottom-color: orangered;
+    cursor: pointer;
+ cursor: hand;
+}
+
+#button:hover{
+    background-color: #ffba3d;
+    border-bottom-color: #ff5819;
+}
+   
+#modal{
+    position: absolute;
+    top:50%;
+    left:50%;
+    height:0px;
+    width:0px;
+    background-color: rgb(230,98,73);
+    border-style:solid;
+    border-color:rgb(230,98,73);
+    border-radius: 7px;
+    border-width:0px;
+    opacity: 0;
+    -webkit-transition:all 0.5s ease;
+    -moz-transition:all 0.5s ease 0s;
+    box-shadow: -8px 8px rgba(0,0,0,0.2);
+
+}
+   
+#close{
+    position: absolute;
+    top:-20px;
+    right:-20px;
+    height:40px;
+    width:40px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgb(230,98,73);
+    border-width: 2px;
+    cursor: pointer;
+ cursor: hand;
+    background-color: white;
+    box-shadow: -4px 4px black;
+    box-shadow: -4px 4px rgba(0,0,0,0.5);
+}
+   
+#line1{
+    position: absolute;
+    top:10%;
+    height: 80%;
+    left: 45%;
+    width:10%;
+    background-color: black;
+    -ms-transform: rotate(30deg); /* IE 9 */
+    -webkit-transform: rotate(30deg); /* Safari */
+    transform: rotate(30deg);
+    -webkit-transition:all 0.2s ease;
+    -moz-transition:all 0.2s ease 0s;
+}
+   
+#line2{
+    position: absolute;
+    top:10%;
+    height: 80%;
+    left: 45%;
+    width:10%;
+    background-color: black;
+    -ms-transform: rotate(-39deg); /* IE 9 */
+    -webkit-transform: rotate(-30deg); /* Safari */
+    transform: rotate(-30deg);
+    -webkit-transition:all 0.2s ease;
+    -moz-transition:all 0.2s ease 0s;
+}
+   
+    #copyright{
+        position: absolute;
+        top:0px;
+        height:6%;
+        left:0px;
+        width:100%;
+        text-align: center;
+     }
+   
+    #copyright a{
+        color:black;
+    }
+   
+
+#close:hover #line1{
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Safari */
+    transform: rotate(45deg);
+    opacity: 0.7;
+}
+   
+#close:hover #line2{
+    -ms-transform: rotate(-45deg); /* IE 9 */
+    -webkit-transform: rotate-(45deg); /* Safari */
+    transform: rotate(-45deg);
+    opacity: 0.7;
+}
+   
+#success{
+    
+}
+
+#modalTop{
+    position: absolute;
+    top:5%;
+    left:5%;
+    height:60%;
+    width:90%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+   
+   
+#modalPartition{
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    height:30%;
+    width:100%;
+    background-color: white;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+   
+#modalText{
+    position: absolute;
+    top:38%;
+    height:25%;
+    width:100%;
+    left:0%;
+    text-align: center;
+    color:white;
+}
+   
+
+   
+#partitionButton{
+    position: absolute;
+    top:30%;
+    left:30%;
+    width:40%;
+    height:60%;
+
+}
+
+.btn-block{
+    background-color: rgb(230,98,73);
+    border-color: rgb(230,98,73);
+}
+   
+.btn-block:hover{
+    background-color: rgb(212,90,67);
+    border-color: rgb(212,90,67);
+}
+   
+   
+</style>
+
+<script>
+function openModal(){
+    var modal = document.getElementById("modal");
+
+   
+    modal.style.top="10%";
+    modal.style.height="65%";
+    modal.style.left="32.5%";
+    modal.style.width="35%";
+    modal.style.borderWidth="2px";
+    modal.style.opacity="1";
+}
+   
+function closeModal(){
+    var modal = document.getElementById("modal");
+
+   
+    modal.style.top="50%";
+    modal.style.height="0%";
+    modal.style.left="50%";
+    modal.style.width="0%";
+    modal.style.borderWidth="0px";
+    modal.style.opacity="0";
+}
+   
+function animate(){
+    var button = document.getElementById("button");
+   
+    if(button.style.top!="43%"){
+        button.style.top="43%";
+    }
+    else{
+        button.style.top="40%";
+    }
+   
+    setTimeout("animate()",320);
+}
+</script>
+   
+</html>
